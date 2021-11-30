@@ -1,4 +1,4 @@
-package casoCrapsGBL;
+package juegoCraps;
 
 import java.util.Random ;
 /**
