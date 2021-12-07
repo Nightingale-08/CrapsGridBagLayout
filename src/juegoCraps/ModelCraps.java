@@ -14,7 +14,7 @@ package juegoCraps;
 public class ModelCraps {
      private DadoCraps dado1,dado2;
      private  int tiro, punto, estado, flag;
-     private String estadoJuego;
+     private String[] estadoJuego;
      private int[] caras;
 
     /**
@@ -25,6 +25,7 @@ public class ModelCraps {
         dado1 = new DadoCraps();
         dado2 = new DadoCraps();
         caras= new int[2];
+        estadoJuego = new String[2];
         flag = 0;
 
     }
@@ -36,6 +37,7 @@ public class ModelCraps {
        caras[0] =  dado1.getCaraDado();
        caras[1] =  dado2.getCaraDado();
        tiro = caras[0] + caras[1];
+
     }
     /**
      * This method establish game state according to estado value
@@ -76,11 +78,14 @@ public class ModelCraps {
             estado =4;
             flag = 0;
 
-        }
-        if(tiro==7){
-            estado = 5;
-            flag = 0;
+        }else {
+            if (tiro == 7) {
+                estado = 5;
+                flag = 0;
 
+            }else{
+                estado=6;
+            }
         }
 
     }
@@ -100,19 +105,37 @@ public class ModelCraps {
      */
 
 
-    public String getEstadoJuego() {
+    public String[] getEstadoJuego() {
         switch (estado){
-            case 1 : estadoJuego= "Sacaste Natural, GANASTE Felicidades!!!";
+            case 1 :  estadoJuego[0]= "Tiro de Salida= "+ tiro+".";
+                      estadoJuego[1]= "Sacaste Natural, GANASTE Felicidades!!!";
                 break;
-            case 2 : estadoJuego= "Sacaste un valor de Craps, PERDISTE !!!.";
+            case 2 :  estadoJuego[0]= "Tiro de Salida= "+ tiro+".";
+                      estadoJuego[1]= "Sacaste un valor de Craps, PERDISTE !!!.";
                 break;
-            case 3 : estadoJuego= "Estableciste Punto" + punto +
-                                  "vuelve a tirar para sacar "+punto+"de nuevo."+
-                                  "\nPero si sacas 7 antes de lograrlo, PERDERAS!!!";
+            case 3 :  estadoJuego[0]= "Tiro de Salida= "+ tiro+"." +
+                                      "\nPunto = "+ punto+ ".";
+
+                      estadoJuego[1]= "Estableciste Punto " + punto +
+                                      " vuelve a tirar para sacar "+punto+" de nuevo."+
+                                      "\nPero si sacas 7 antes de lograrlo, PERDERAS!!!";
                 break;
-            case 4 : estadoJuego= "Volviste a asacar"+punto+ " GANASTE!!!";
+            case 4 :  estadoJuego[0]= "Tiro de Salida= "+ punto+"." +
+                                      "\nPunto = "+ punto+ "." +
+                                      "\nEl valor del  nuevo tiro="+ tiro + ".";
+
+                      estadoJuego[1]= "Volviste a a sacar "+punto+ " GANASTE!!!";
                 break;
-            case 5 : estadoJuego = "Sacaste 7 antes que"+punto+" has PERDIDO!!";
+            case 5 :  estadoJuego[0]= "Tiro de Salida= "+ punto+"." +
+                                      "\nPunto = "+ punto+ "." +
+                                      "\nEl valor del  nuevo tiro="+ tiro + ".";
+                      estadoJuego[1] = "Sacaste 7 antes que "+punto+" has PERDIDO!!";
+                break;
+            case 6: estadoJuego[0]= "Tiro de Salida= "+ punto+"." +
+                    "\nPunto = "+ punto+ "." +
+                    "\nEl valor del  nuevo tiro="+ tiro + ".";
+                    estadoJuego[1] = "\n Estas en Punto y debes seguir lanzando!!!" +
+                                     "\nPero si sacas 7 antes que "+punto+" has PERDIDO!!";
                 break;
         }
         return estadoJuego;
