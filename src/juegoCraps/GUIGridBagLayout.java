@@ -2,8 +2,7 @@ package juegoCraps;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 /**
  * This class is the visual interface with a GridBagLayout
@@ -29,6 +28,7 @@ public class GUIGridBagLayout extends JFrame {
     private ImageIcon imageDados;
     private Escucha escucha;
     private ModelCraps modelCraps;
+    private JFrame window;
     /**
      * Constructor of GUI class
      */
@@ -57,8 +57,12 @@ public class GUIGridBagLayout extends JFrame {
         //Create Listener Object and Control Object
         escucha= new Escucha();
         modelCraps = new ModelCraps();
+        window=this;
         //Set up JComponents
         headerProject = new Header("Mesa Juego Craps", Color.BLACK);
+        headerProject.addMouseListener(escucha);
+        headerProject.addMouseMotionListener(escucha);
+        headerProject.setCursor(new Cursor(Cursor.MOVE_CURSOR));
         constraints.gridx=0;
         constraints.gridy=0;
         constraints.gridwidth=2;
@@ -147,7 +151,8 @@ public class GUIGridBagLayout extends JFrame {
     }
 
 
-    private class Escucha implements ActionListener {
+    private class Escucha implements ActionListener, MouseListener, MouseMotionListener {
+        private int x,y;
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -170,6 +175,46 @@ public class GUIGridBagLayout extends JFrame {
                     System.exit(0);
                 }
             }
+
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+           x= e.getX();
+           y= e.getY();
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            setLocation(window.getLocation().x + e.getX()-x,
+                        window.getLocation().y + e.getY()-y);
+
+
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
 
         }
     }
