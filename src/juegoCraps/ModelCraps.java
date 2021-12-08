@@ -134,7 +134,7 @@ public class ModelCraps {
             case 6: estadoJuego[0]= "Tiro de Salida= "+ punto+"." +
                     "\nPunto = "+ punto+ "." +
                     "\nEl valor del  nuevo tiro="+ tiro + ".";
-                    estadoJuego[1] = "\n Estas en Punto y debes seguir lanzando!!!" +
+                    estadoJuego[1] = "Estas en Punto y debes seguir lanzando!!!" +
                                      "\nPero si sacas 7 antes que "+punto+" has PERDIDO!!";
                 break;
         }

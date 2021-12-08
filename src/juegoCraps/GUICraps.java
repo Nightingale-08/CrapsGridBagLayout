@@ -5,19 +5,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
-responsabilidades
-mostrar dados
-perimitir al jugador lanzar dados
-mostar estado del juego
 
 
 /**
- * This class is used for ...
- * @autor Paola-J Rodriguez-C paola.rodriguez@correounivalle.edu.co
- * @version v.1.0.0 date:21/11/2021
+ * This class is the visual interface
+ * @autor Luis-F. Belalcazar - A. 2028783 <luis.felipe.belalcazar@correounivalle.edu.co>
+ * @Version v.1.0.0 date 30/11/21
  */
-public class GUICrapsGBL extends JFrame {
+
+public class GUICraps extends JFrame {
     public static final String MENSAJE_INICIO="Bienvenido a Craps.\n" +
             "Oprime el boton lanzar para iniciar el juego."
             +"\nSi tu tiro de salida es 7 u 11 ganas con Natural."
@@ -41,7 +37,7 @@ public class GUICrapsGBL extends JFrame {
     /**
      * Constructor of GUI class
      */
-    public GUICrapsGBL(){
+    public GUICraps(){
         initGUI();
 
         //Default JFrame configuration
@@ -117,7 +113,7 @@ public class GUICrapsGBL extends JFrame {
      */
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
-            GUICrapsGBL miProjectGUICrapsGBL = new GUICrapsGBL();
+            GUICraps miProjectGUICraps = new GUICraps();
         });
     }
 
